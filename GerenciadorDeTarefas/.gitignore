@@ -1,0 +1,34 @@
+## Ignore arquivos de build e temporários
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Pastas do Visual Studio
+.vs/
+.vscode/
+
+## Arquivos de log
+*.log
+
+## Arquivos gerados por testes
+TestResults/
+
+## Configurações locais
+*.dbmdl
+*.dbproj.schemaview
+
+## Backups
+*.bak
+*.old
+
+## Sistema operacional
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## Outros
+*.DS_Store
