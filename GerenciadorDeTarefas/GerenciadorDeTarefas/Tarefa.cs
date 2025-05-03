@@ -31,12 +31,32 @@ namespace GerenciadorDeTarefas
             tarefas.Add(novaTarefa);
         }
 
-        public static void ExibirTarefass(List<Tarefa> tarefas)
+        public static void ExibirTarefas(List<Tarefa> tarefas)
         {
             foreach (var tarefa in tarefas)
             {
                 Console.WriteLine($"Titulo: {tarefa.Titulo}, Concluída: {tarefa.Concluida}");
             }
         }
+
+        public static void ConcluirTarefa(List<Tarefa> tarefas, string titulo)
+        {
+            foreach (var tarefa in tarefas)
+            {
+                if (tarefa.Titulo.ToLower() == titulo.ToLower())
+                {
+                    tarefa.Concluida = true;
+                    Console.WriteLine($"Tarefa \" {titulo}\" marcada como concluida.");
+                    return;
+                }
+            }
+            Console.WriteLine("Tarefa não encontrada.");
+        }
+        public static void RemoverTarefa(List<Tarefa> tarefas, string titulo)
+        {
+
+            tarefas.RemoveAll(t => t.Titulo.ToLower() == titulo.ToLower());
+        }
+
     }
 }
