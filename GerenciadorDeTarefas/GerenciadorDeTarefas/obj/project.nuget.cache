@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "dwvcQzIHosI=",
+  "dgSpecHash": "mdIOpRK8Ryg=",
   "success": true,
   "projectFilePath": "C:\\Users\\yojhi\\OneDrive\\Área de Trabalho\\C#\\Projetos\\GerenciadorDeTarefas\\GerenciadorDeTarefas\\GerenciadorDeTarefas\\GerenciadorDeTarefas.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\yojhi\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
