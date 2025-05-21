@@ -17,7 +17,9 @@ while (continuar)
     Console.WriteLine("[3] Concluir Tarefa.");
     Console.WriteLine("[4] Remover Tarefa.");
     Console.WriteLine("[5] Salvar Tarefas.");
-    Console.WriteLine("[6] Sair.");
+    Console.WriteLine("[6] Filtrar Tarefas.");
+    Console.WriteLine("[7] Editar Tarefas.");
+    Console.WriteLine("[8] Sair.");
     Console.Write("Escolhar uma opção: ");
     string opcao = Console.ReadLine();
 
@@ -45,11 +47,13 @@ while (continuar)
             Console.WriteLine("Tarefa adicionada com sucesso!");
             Console.WriteLine();
             break;
+
         case "2":
             Console.Clear();
             Metodos.ExibirTarefas(tarefas);
             Console.ReadKey();
             break;
+
         case "3":
             Console.Clear();
             Console.Write("Digite o titulo da tarefa para concluir: ");
@@ -58,6 +62,7 @@ while (continuar)
             Console.WriteLine("Tarefa concluida com sucesso!");
             Console.WriteLine();
             break;
+
         case "4":
             Console.Clear();
             Console.Write("Digite o titulo da tarefa para remover: ");
@@ -66,16 +71,35 @@ while (continuar)
             Console.WriteLine("Tarefa removida com sucesso!");
             Console.WriteLine();
             break;
+
         case "5":
             Console.Clear();
             Metodos.SalvarTarefas(tarefas);
             Console.WriteLine("Tarefa salva com sucessso!");
             Console.WriteLine();
             break;
+
         case "6":
+            Console.Clear();
+            Console.WriteLine("Dese ver [todas], [concluidas] ou [pendentes]? ");
+            string filtro = Console.ReadLine();
+            Metodos.FiltrarTarefa(tarefas, filtro);
+            Console.WriteLine();
+            break;
+
+        case "7":
+            Console.Clear();
+            Console.WriteLine("Digite o titulo da tarefa que deseja editar: ");
+            string tituloEditar = Console.ReadLine();
+            Metodos.EditarTarefa(tarefas, tituloEditar);
+            Console.WriteLine();
+            break;
+
+        case "8":
             Console.Clear();
             continuar = false;
             break;
+
         default:
             Console.Clear();
             Console.WriteLine("Opção Invalida!");

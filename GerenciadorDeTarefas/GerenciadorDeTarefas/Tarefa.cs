@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
+using System.Reflection.Metadata.Ecma335;
+using System.Security;
 
 
 
@@ -85,6 +87,53 @@ namespace GerenciadorDeTarefas
                 Console.WriteLine("Arquivo de tarefas não encontrado.");
             }
                 
+        }
+
+        public static void EditarTarefa(List<Tarefa> tarefas, string tituloAntigo)
+        {
+            var tarefa = tarefas.FirstOrDefault(t => t.Titulo.ToLower() == tituloAntigo.ToLower());
+            if(tarefa != null)
+            {
+                Console.WriteLine("Novo titulo (ou enter para manter o mesmo): ");
+                string novoTitulo = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(novoTitulo))
+                    tarefa.Titulo = novoTitulo;
+
+                Console.WriteLine("Nova descrição (ou enter para manter a mesma): ");
+                string novaDescricao = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(novaDescricao))
+                    tarefa.Descricao = novaDescricao;
+
+                Console.WriteLine("Nova data ( dd/mm/aaaa) ou enter para manter: ");
+                string novaData = Console.ReadLine();
+                if (DateTime.TryParse(novaData, out DateTime novaDataConvertida))
+                    tarefa.DataDeConclusao = novaDataConvertida;
+
+                Console.WriteLine("Tarefa atualizada com sucesso!!");
+            }
+            else
+            {
+                Console.WriteLine("Tarefa não encontrada.");
+            }
+        }
+        public static void FiltrarTarefa( List<Tarefa> tarefas, string filtro)
+        {
+            List<Tarefa> filtradas = filtro.ToLower() switch
+            {
+                "concluidas" => tarefas.Where(t => t.Concluida).ToList(),
+                "pendentes" => tarefas.Where(t => !t.Concluida).ToList(),
+                _ => tarefas
+            };
+
+            if( filtradas.Count == 0)
+            {
+                Console.WriteLine("Nenhuma tarefa encontrada com esse filtro.");
+            }
+            else
+            {
+                Console.WriteLine($"Tarefas({filtro}):");
+                ExibirTarefas(filtradas);
+            }
         }
 
     }
